@@ -1,19 +1,32 @@
 {
-  "name": "utils-test",
+  "name": "utils-test-one",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.min.js",
+  "description": "test",
+  "main": "dist/utilsTest.cjs.js",
+  "module": "dist/utilsTest.es.js",
+  "types": "dist/utilsTest/types/index.d.ts",
+  "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "rollup -w -c",
+    "build": "rollup -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "MeetYou",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MeetQin/utils-test.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/node": "^18.15.11",
+    "node": "^19.8.1",
+    "rollup": "^3.20.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.2"
   }
 }
