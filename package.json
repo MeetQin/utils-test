@@ -1,13 +1,13 @@
 {
   "name": "utils-test-one",
-  "version": "1.0.0",
+  "version": "1.0.13",
   "description": "test",
-  "main": "dist/utilsTest.cjs.js",
-  "module": "dist/utilsTest.es.js",
-  "types": "dist/utilsTest/types/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "type": "module",
   "files": [
-    "dist"
+    "lib",
+    "esm"
   ],
   "scripts": {
     "dev": "rollup -w -c",
@@ -24,6 +24,7 @@
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^18.15.11",
     "node": "^19.8.1",
