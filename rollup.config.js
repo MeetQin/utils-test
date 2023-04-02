@@ -4,6 +4,7 @@ import { defineConfig } from "rollup";
 import path from "node:path";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import babel from "@rollup/plugin-babel";
 const mode = process.env.MODE;
 const isProd = mode === "prod";
 console.log(isProd, "isProd");
@@ -38,6 +39,10 @@ export default defineConfig({
     }),
     nodeResolve({
       extensions: [".mjs", ".js", ".json", ".ts"],
+    }),
+    babel({
+      exclude: "node_modules/**",
+      babelHelpers: "bundled",
     }),
   ],
 });
