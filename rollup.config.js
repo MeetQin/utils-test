@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { defineConfig } from "rollup";
 import path from "node:path";
@@ -15,27 +16,30 @@ const pkg = JSON.parse(
 export default defineConfig({
   input: path.resolve(__dirname, "./src/index.ts"),
   output: [
+    /* {
+      file: path.resolve(__dirname, pkg.main),
+      format: "cjs",
+    }, */
     {
       file: path.resolve(__dirname, pkg.main),
+      format: "esm",
       exports: "named",
-      format: "cjs",
-      sourcemap: false,
+      name: pkg.name,
+      extend: true,
     },
-    {
-      file: path.resolve(__dirname, pkg.module),
-      format: "es",
-      sourcemap: false,
-    },
-    {
-      file: path.resolve(__dirname, "dist/utilsTest.global.js"),
-      name: "utilsTest",
+    /* {
+      file: path.resolve(__dirname, "lib/utilsTest.global.js"),
+      name: pkg.name,
       format: "iife",
-      sourcemap: false,
-    },
+      extend: true,
+    }, */
   ],
   plugins: [
+    commonjs(),
     typescript({
-      tsconfig: path.resolve(__dirname, "tsconfig.json"),
+      outDir: "lib",
+      declaration: true,
+      declarationDir: "lib",
     }),
     nodeResolve({
       extensions: [".mjs", ".js", ".json", ".ts"],
