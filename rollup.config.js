@@ -16,23 +16,23 @@ const pkg = JSON.parse(
 export default defineConfig({
   input: path.resolve(__dirname, "./src/index.ts"),
   output: [
-    /* {
-      file: path.resolve(__dirname, pkg.main),
-      format: "cjs",
-    }, */
     {
       file: path.resolve(__dirname, pkg.main),
+      format: "cjs",
+    },
+    {
+      file: path.resolve(__dirname, pkg.module),
       format: "esm",
       exports: "named",
       name: pkg.name,
       extend: true,
     },
-    /* {
+    {
       file: path.resolve(__dirname, "lib/utilsTest.global.js"),
       name: pkg.name,
       format: "iife",
       extend: true,
-    }, */
+    },
   ],
   plugins: [
     commonjs(),
